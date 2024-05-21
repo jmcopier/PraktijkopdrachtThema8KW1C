@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="View\Model\**" />
+    <EmbeddedResource Remove="View\Model\**" />
+    <None Remove="View\Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="Controller\" />
+  </ItemGroup>
+
+</Project>
