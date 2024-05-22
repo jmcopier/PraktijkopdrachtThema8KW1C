@@ -16,6 +16,9 @@
     <Compile Update="View\FrmTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\FrmTeacherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\FrmThemeForm.cs">
       <SubType>Form</SubType>
     </Compile>

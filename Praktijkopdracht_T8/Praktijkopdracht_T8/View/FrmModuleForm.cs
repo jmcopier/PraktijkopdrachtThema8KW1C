@@ -1,15 +1,5 @@
 ﻿using Praktijkopdracht_T8.Controller;
 using Praktijkopdracht_T8.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Praktijkopdracht_T8.View
 {
@@ -42,8 +32,28 @@ namespace Praktijkopdracht_T8.View
                     item.SubItems.Add($"{module.Teacher.FirstName} {module.Teacher.Infix} {module.Teacher.Surname}");
                 }
 
+                item.Tag = module;
+
                 moduleListView.Items.Add(item);
             }
+
+            moduleListView.SelectedIndexChanged += ModuleListView_SelectedIndexChanged;
+
+            teacher.Enabled = false;
+        }
+
+        private void ModuleListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            teacher.Enabled = moduleListView.SelectedItems.Count > 0;
+        }
+
+        private void teacher_Click(object sender, EventArgs e)
+        {
+            ListViewItem selectedItem = moduleListView.SelectedItems[0];
+            ModuleModel selectedModule = (ModuleModel)selectedItem.Tag;
+
+            FrmTeacherForm frm = new(selectedModule.Teacher);
+            frm.ShowDialog();
         }
     }
 }

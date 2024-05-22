@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             moduleListView = new ListView();
-            button1 = new Button();
+            teacher = new Button();
             SuspendLayout();
             // 
             // label1
@@ -52,21 +52,22 @@
             moduleListView.TabIndex = 2;
             moduleListView.UseCompatibleStateImageBehavior = false;
             // 
-            // button1
+            // teacher
             // 
-            button1.Location = new Point(434, 96);
-            button1.Name = "button1";
-            button1.Size = new Size(102, 23);
-            button1.TabIndex = 3;
-            button1.Text = "Docent inzien";
-            button1.UseVisualStyleBackColor = true;
+            teacher.Location = new Point(434, 96);
+            teacher.Name = "teacher";
+            teacher.Size = new Size(102, 23);
+            teacher.TabIndex = 3;
+            teacher.Text = "Docent inzien";
+            teacher.UseVisualStyleBackColor = true;
+            teacher.Click += teacher_Click;
             // 
             // FrmModuleForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(548, 378);
-            Controls.Add(button1);
+            Controls.Add(teacher);
             Controls.Add(moduleListView);
             Controls.Add(label1);
             Name = "FrmModuleForm";
@@ -79,6 +80,6 @@
 
         private Label label1;
         private ListView moduleListView;
-        private Button button1;
+        private Button teacher;
     }
 }
