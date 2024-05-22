@@ -1,4 +1,8 @@
-
+/*
+ * Jesse Copier
+ * MainWindow
+ * 22-5-2024
+ */
 
 using Praktijkopdracht_T8.View;
 

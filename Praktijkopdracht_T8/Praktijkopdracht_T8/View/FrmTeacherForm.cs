@@ -1,4 +1,9 @@
-﻿
+﻿/*
+ * Jesse Copier
+ * TeacherForm
+ * 22-5-2024
+ */
+
 using Praktijkopdracht_T8.Model;
 using System.Windows.Forms;
 
@@ -7,6 +12,7 @@ namespace Praktijkopdracht_T8.View
     public partial class FrmTeacherForm : Form
     {
         private TeacherModel teacher;
+
         public FrmTeacherForm(TeacherModel teacher)
         {
             InitializeComponent();
