@@ -83,6 +83,7 @@
             exportTask.TabIndex = 4;
             exportTask.Text = "Exporteren";
             exportTask.UseVisualStyleBackColor = true;
+            exportTask.Click += exportTask_Click;
             // 
             // taskComboBox
             // 

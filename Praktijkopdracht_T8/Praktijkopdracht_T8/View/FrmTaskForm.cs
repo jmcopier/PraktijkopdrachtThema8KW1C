@@ -1,5 +1,6 @@
 ﻿using Praktijkopdracht_T8.Controller;
 using Praktijkopdracht_T8.Model;
+using System.Text;
 
 namespace Praktijkopdracht_T8.View
 {
@@ -70,6 +71,41 @@ namespace Praktijkopdracht_T8.View
         {
             FrmAddTaksForm frm = new();
             frm.ShowDialog();
+        }
+
+        private void exportTask_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new();
+            saveFileDialog.Filter = "CSV File|*.csv";
+            saveFileDialog.Title = "CSV File";
+            saveFileDialog.ShowDialog();
+
+            if (saveFileDialog.FileName != "")
+            {
+                ExportListViewToCSV(taskListView, saveFileDialog.FileName);
+            }
+        }
+
+        private void ExportListViewToCSV(ListView listView, string filePath)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (ColumnHeader column in listView.Columns)
+            {
+                sb.Append(column.Text + ",");
+            }
+            sb.AppendLine();
+
+            foreach (ListViewItem item in listView.Items)
+            {
+                foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+                {
+                    sb.Append(subItem.Text + ",");
+                }
+                sb.AppendLine();
+            }
+
+            File.WriteAllText(filePath, sb.ToString());
         }
     }
 }
