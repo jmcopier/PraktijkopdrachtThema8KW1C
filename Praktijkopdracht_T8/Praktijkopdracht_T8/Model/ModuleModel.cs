@@ -10,7 +10,7 @@ namespace Praktijkopdracht_T8.Model
     {
         public int ModuleId { get; set; }
         public string Name { get; set; }
-        public int ThemeId { get; set; }
-        public int TeacherId { get; set; }
+        public ThemeModel Theme { get; set; }
+        public TeacherModel Teacher { get; set; }
     }
 }

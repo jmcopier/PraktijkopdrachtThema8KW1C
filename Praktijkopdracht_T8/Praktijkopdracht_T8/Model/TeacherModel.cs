@@ -6,7 +6,7 @@
 
 namespace Praktijkopdracht_T8.Model
 {
-    public class DocentModel
+    public class TeacherModel
     {
         public int TeacherId { get; set; }
         public string FirstName { get; set; }

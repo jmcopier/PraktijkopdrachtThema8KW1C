@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Praktijkopdracht_T8/Praktijkopdracht_T8/bin/Debug/net8.0-windows
+/Praktijkopdracht_T8/Praktijkopdracht_T8/obj
+/Praktijkopdracht_T8/.vs
+/Praktijkopdracht_T8/Praktijkopdracht_T8/Properties
