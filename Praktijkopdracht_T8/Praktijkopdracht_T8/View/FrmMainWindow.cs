@@ -27,5 +27,33 @@ namespace Praktijkopdracht_T8
 
             frmTask.Show();
         }
+
+        private void themeBtn_Click(object sender, EventArgs e)
+        {
+            FrmThemeForm frmTask = new();
+
+            frmTask.TopLevel = false;
+            frmTask.FormBorderStyle = FormBorderStyle.None;
+            frmTask.WindowState = FormWindowState.Maximized;
+            frmTask.Dock = DockStyle.Fill;
+
+            mainPanel.Controls.Add(frmTask);
+
+            frmTask.Show();
+        }
+
+        private void moduleBtn_Click(object sender, EventArgs e)
+        {
+            FrmModuleForm frmTask = new();
+
+            frmTask.TopLevel = false;
+            frmTask.FormBorderStyle = FormBorderStyle.None;
+            frmTask.WindowState = FormWindowState.Maximized;
+            frmTask.Dock = DockStyle.Fill;
+
+            mainPanel.Controls.Add(frmTask);
+
+            frmTask.Show();
+        }
     }
 }

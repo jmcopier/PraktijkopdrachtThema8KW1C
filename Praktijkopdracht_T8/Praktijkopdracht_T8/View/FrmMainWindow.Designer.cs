@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainWindow));
             pictureBox1 = new PictureBox();
             taskBtn = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            themeBtn = new Button();
+            moduleBtn = new Button();
             closeApp = new Button();
             mainPanel = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -58,23 +58,25 @@
             taskBtn.UseVisualStyleBackColor = true;
             taskBtn.Click += taskBtn_Click;
             // 
-            // button2
+            // themeBtn
             // 
-            button2.Location = new Point(50, 241);
-            button2.Name = "button2";
-            button2.Size = new Size(130, 23);
-            button2.TabIndex = 2;
-            button2.Text = "Thema's";
-            button2.UseVisualStyleBackColor = true;
+            themeBtn.Location = new Point(50, 241);
+            themeBtn.Name = "themeBtn";
+            themeBtn.Size = new Size(130, 23);
+            themeBtn.TabIndex = 2;
+            themeBtn.Text = "Thema's";
+            themeBtn.UseVisualStyleBackColor = true;
+            themeBtn.Click += themeBtn_Click;
             // 
-            // button3
+            // moduleBtn
             // 
-            button3.Location = new Point(50, 282);
-            button3.Name = "button3";
-            button3.Size = new Size(130, 23);
-            button3.TabIndex = 3;
-            button3.Text = "Module's";
-            button3.UseVisualStyleBackColor = true;
+            moduleBtn.Location = new Point(50, 282);
+            moduleBtn.Name = "moduleBtn";
+            moduleBtn.Size = new Size(130, 23);
+            moduleBtn.TabIndex = 3;
+            moduleBtn.Text = "Module's";
+            moduleBtn.UseVisualStyleBackColor = true;
+            moduleBtn.Click += moduleBtn_Click;
             // 
             // closeApp
             // 
@@ -100,10 +102,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(mainPanel);
             Controls.Add(closeApp);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(moduleBtn);
+            Controls.Add(themeBtn);
             Controls.Add(taskBtn);
             Controls.Add(pictureBox1);
+            MaximizeBox = false;
             Name = "FrmMainWindow";
             Text = "Planning";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -114,8 +117,8 @@
 
         private PictureBox pictureBox1;
         private Button taskBtn;
-        private Button button2;
-        private Button button3;
+        private Button themeBtn;
+        private Button moduleBtn;
         private Button closeApp;
         private Panel mainPanel;
     }

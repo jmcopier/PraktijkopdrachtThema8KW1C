@@ -10,7 +10,13 @@
     <Compile Update="View\FrmMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\FrmModuleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\FrmTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="View\FrmThemeForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
