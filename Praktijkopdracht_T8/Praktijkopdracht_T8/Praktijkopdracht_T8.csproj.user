@@ -4,6 +4,9 @@
     <Compile Update="View\FrmAddTaksForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\FrmDeleteTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="View\FrmMainWindow.cs">
       <SubType>Form</SubType>
     </Compile>

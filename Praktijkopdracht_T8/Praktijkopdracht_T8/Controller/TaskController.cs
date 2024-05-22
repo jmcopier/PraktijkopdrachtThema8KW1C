@@ -13,6 +13,33 @@ namespace Praktijkopdracht_T8.Controller
     {
         private static string connectionString = @"Data Source=LAPTOP-FKB21FMN;Initial Catalog=PlanningDB;Integrated Security=True";
 
+        public static int Create(TaskModel task)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string sqlQuery = "INSERT INTO Taak (Naam, Omschrijving, Startdatum, Inleverdatum, Status, ModuleId) VALUES (@Name, @Description, @Startdate, @DueDate, @Status, @ModuleId)";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, con))
+                {
+                    command.Parameters.AddWithValue("Name", task.Name);
+                    command.Parameters.AddWithValue("Description", task.Description);
+                    command.Parameters.AddWithValue("Startdate", task.Startdate);
+                    command.Parameters.AddWithValue("DueDate", task.DueDate);
+                    command.Parameters.AddWithValue("Status", task.Status);
+                    command.Parameters.AddWithValue("ModuleId", task.Module.ModuleId);
+                    try
+                    {
+                        return command.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
+
         public static List<TaskModel> ReadAll(string status)
         {
             List<TaskModel> returnList = new();
@@ -92,29 +119,24 @@ namespace Praktijkopdracht_T8.Controller
             return returnList;
         }
 
-        public static int Create(TaskModel task)
+        public static int Delete(TaskModel task)
         {
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                string sqlQuery = "INSERT INTO Taak (Naam, Omschrijving, Startdatum, Inleverdatum, Status, ModuleId) VALUES (@Name, @Description, @Startdate, @DueDate, @Status, @ModuleId)";
+                string sqlQuery = "DELETE FROM Taak WHERE TaakId = @TaskId";
 
                 using (SqlCommand command = new SqlCommand(sqlQuery, con))
                 {
-                    command.Parameters.AddWithValue("Name", task.Name);
-                    command.Parameters.AddWithValue("Description", task.Description);
-                    command.Parameters.AddWithValue("Startdate", task.Startdate);
-                    command.Parameters.AddWithValue("DueDate", task.DueDate);
-                    command.Parameters.AddWithValue("Status", task.Status);
-                    command.Parameters.AddWithValue("ModuleId", task.Module.ModuleId);
-                    try
-                    {
+                    command.Parameters.AddWithValue("TaskId", task.TaskId);
+                    //try
+                    //{
                         return command.ExecuteNonQuery();
-                    }
-                    catch
-                    {
-                        return 0;
-                    }
+                    //}
+                    //catch
+                    //{
+                        //return 0;
+                    //}
                 }
             }
         }

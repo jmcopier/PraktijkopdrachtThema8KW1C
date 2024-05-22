@@ -35,6 +35,7 @@
             exportTask = new Button();
             taskComboBox = new ComboBox();
             label2 = new Label();
+            refresh = new Button();
             SuspendLayout();
             // 
             // label1
@@ -52,7 +53,7 @@
             // 
             taskListView.Location = new Point(12, 125);
             taskListView.Name = "taskListView";
-            taskListView.Size = new Size(524, 241);
+            taskListView.Size = new Size(524, 213);
             taskListView.TabIndex = 1;
             taskListView.UseCompatibleStateImageBehavior = false;
             // 
@@ -74,6 +75,7 @@
             deleteTask.TabIndex = 3;
             deleteTask.Text = "Verwijderen";
             deleteTask.UseVisualStyleBackColor = true;
+            deleteTask.Click += deleteTask_Click;
             // 
             // exportTask
             // 
@@ -102,11 +104,22 @@
             label2.TabIndex = 6;
             label2.Text = "Toon:";
             // 
+            // refresh
+            // 
+            refresh.Location = new Point(446, 344);
+            refresh.Name = "refresh";
+            refresh.Size = new Size(90, 23);
+            refresh.TabIndex = 7;
+            refresh.Text = "Vernieuwen";
+            refresh.UseVisualStyleBackColor = true;
+            refresh.Click += refresh_Click;
+            // 
             // FrmTaskForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(548, 378);
+            Controls.Add(refresh);
             Controls.Add(label2);
             Controls.Add(taskComboBox);
             Controls.Add(exportTask);
@@ -129,5 +142,6 @@
         private Button exportTask;
         private ComboBox taskComboBox;
         private Label label2;
+        private Button refresh;
     }
 }

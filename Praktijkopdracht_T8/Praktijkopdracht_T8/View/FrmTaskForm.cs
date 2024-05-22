@@ -36,6 +36,8 @@ namespace Praktijkopdracht_T8.View
             taskListView.View = System.Windows.Forms.View.Details;
             taskListView.FullRowSelect = true;
 
+            taskListView.SelectedIndexChanged += TaskListView_SelectedIndexChanged;
+
             RefreshTaskListView(taskComboBox.Text);
 
             deleteTask.Enabled = false;
@@ -45,6 +47,11 @@ namespace Praktijkopdracht_T8.View
         {
             string selectedStatus = taskComboBox.SelectedItem.ToString();
             RefreshTaskListView(selectedStatus);
+        }
+
+        private void TaskListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            deleteTask.Enabled = taskListView.SelectedItems.Count > 0;
         }
 
         private void RefreshTaskListView(string status)
@@ -106,6 +113,20 @@ namespace Praktijkopdracht_T8.View
             }
 
             File.WriteAllText(filePath, sb.ToString());
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            RefreshTaskListView(taskComboBox.Text);
+        }
+
+        private void deleteTask_Click(object sender, EventArgs e)
+        {
+            ListViewItem selectedItem = taskListView.SelectedItems[0];
+            TaskModel selectedTask = (TaskModel)selectedItem.Tag;
+
+            FrmDeleteTaskForm frm = new(selectedTask);
+            frm.ShowDialog();
         }
     }
 }
