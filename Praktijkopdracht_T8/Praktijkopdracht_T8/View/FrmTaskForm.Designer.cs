@@ -64,6 +64,7 @@
             addTask.TabIndex = 2;
             addTask.Text = "Toevoegen";
             addTask.UseVisualStyleBackColor = true;
+            addTask.Click += addTask_Click;
             // 
             // deleteTask
             // 

@@ -1,7 +1,7 @@
 ﻿/*
  * Jesse Copier
  * TaskController klas
- * 25-4-2024
+ * 21-5-2024
  */
 
 using Praktijkopdracht_T8.Model;
@@ -9,11 +9,11 @@ using System.Data.SqlClient;
 
 namespace Praktijkopdracht_T8.Controller
 {
-    public class TaskController
+    public static class TaskController
     {
         private static string connectionString = @"Data Source=LAPTOP-FKB21FMN;Initial Catalog=PlanningDB;Integrated Security=True";
 
-        public List<TaskModel> ReadAll(string status)
+        public static List<TaskModel> ReadAll(string status)
         {
             List<TaskModel> returnList = new();
 
@@ -21,6 +21,7 @@ namespace Praktijkopdracht_T8.Controller
             {
                 con.Open();
                 string sqlQuery = "SELECT TaakId AS TaskId, t.Naam AS Task, Omschrijving AS [Description], Startdatum AS Startdate, Inleverdatum AS DueDate, [Status], m.ModuleId, m.Naam AS Module, th.ThemaId AS ThemeId, th.Naam AS Theme, d.DocentId AS TeacherId, Voornaam AS FirstName, Tussenvoegsel AS Infix, Achternaam AS Surname, Afbeelding AS [Image] FROM Taak t INNER JOIN Module m ON t.ModuleId = m.ModuleId INNER JOIN Thema th ON m.ThemaId = th.ThemaId INNER JOIN Docent d ON d.DocentId = m.DocentId";
+
                 if (status != "Alles")
                 {
                     sqlQuery += " WHERE [Status] = @Status";
@@ -70,7 +71,7 @@ namespace Praktijkopdracht_T8.Controller
             return returnList;
         }
 
-        public List<string> GetStatus()
+        public static List<string> GetStatus()
         {
             List<string> returnList = new();
 
@@ -89,6 +90,33 @@ namespace Praktijkopdracht_T8.Controller
             }
 
             return returnList;
+        }
+
+        public static int Create(TaskModel task)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string sqlQuery = "INSERT INTO Taak (Naam, Omschrijving, Startdatum, Inleverdatum, Status, ModuleId) VALUES (@Name, @Description, @Startdate, @DueDate, @Status, @ModuleId)";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, con))
+                {
+                    command.Parameters.AddWithValue("Name", task.Name);
+                    command.Parameters.AddWithValue("Description", task.Description);
+                    command.Parameters.AddWithValue("Startdate", task.Startdate);
+                    command.Parameters.AddWithValue("DueDate", task.DueDate);
+                    command.Parameters.AddWithValue("Status", task.Status);
+                    command.Parameters.AddWithValue("ModuleId", task.Module.ModuleId);
+                    try
+                    {
+                        return command.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }

@@ -12,5 +12,13 @@ namespace Praktijkopdracht_T8.Model
         public string Name { get; set; }
         public ThemeModel Theme { get; set; }
         public TeacherModel Teacher { get; set; }
+
+        public string DisplayName
+        {
+            get
+            {
+                return $"{Name}, {Theme.Name}";
+            }
+        }
     }
 }

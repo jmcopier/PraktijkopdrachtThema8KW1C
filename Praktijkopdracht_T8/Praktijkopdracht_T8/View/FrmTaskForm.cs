@@ -5,7 +5,6 @@ namespace Praktijkopdracht_T8.View
 {
     public partial class FrmTaskForm : Form
     {
-        private TaskController taskController = new();
         public FrmTaskForm()
         {
             InitializeComponent();
@@ -13,7 +12,7 @@ namespace Praktijkopdracht_T8.View
             // Vullen combobox
             taskComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            List<string> status = taskController.GetStatus();
+            List<string> status = TaskController.GetStatus();
 
             taskComboBox.Items.Add("Alles");
 
@@ -51,7 +50,7 @@ namespace Praktijkopdracht_T8.View
         {
             taskListView.Items.Clear();
 
-            List<TaskModel> tasks = taskController.ReadAll(status);
+            List<TaskModel> tasks = TaskController.ReadAll(status);
 
             foreach (TaskModel task in tasks)
             {
@@ -65,6 +64,12 @@ namespace Praktijkopdracht_T8.View
 
                 taskListView.Items.Add(item);
             }
+        }
+
+        private void addTask_Click(object sender, EventArgs e)
+        {
+            FrmAddTaksForm frm = new();
+            frm.ShowDialog();
         }
     }
 }
