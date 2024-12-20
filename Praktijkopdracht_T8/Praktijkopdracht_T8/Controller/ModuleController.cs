@@ -15,7 +15,7 @@ namespace Praktijkopdracht_T8.Controller
 
         public static List<ModuleModel> ReadAll()
         {
-            List<ModuleModel> returnList = new();
+                List<ModuleModel> returnList = new();
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {

@@ -41,7 +41,7 @@ namespace Praktijkopdracht_T8.View
             }
 
             moduleCombo.DataSource = modules;
-            moduleCombo.DisplayMember = "DisplayName";
+            // moduleCombo.DisplayMember = "DisplayName";
             moduleCombo.ValueMember = "ModuleId";
 
         }
