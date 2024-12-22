@@ -28,8 +28,16 @@ namespace Praktijkopdracht_T8.View
                 txtTeacherName.Text = $"{teacher.FirstName} {teacher.Infix} {teacher.Surname}";
             }
 
-            string imagePath = teacher.Image;
-            teacherImage.Image = Image.FromFile(imagePath);
+            if (teacher.Image != null && teacher.Image.Length > 0)
+            {
+                using (var ms = new MemoryStream(teacher.Image))
+                {
+                    teacherImage.Image = Image.FromStream(ms);
+                }
+            }
+
+            // string imagePath = teacher.Image;
+            // teacherImage.Image = Image.FromFile(imagePath);
         }
     }
 }

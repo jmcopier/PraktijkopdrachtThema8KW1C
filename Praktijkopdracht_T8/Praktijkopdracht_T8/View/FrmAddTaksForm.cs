@@ -41,7 +41,7 @@ namespace Praktijkopdracht_T8.View
             }
 
             moduleCombo.DataSource = modules;
-            // moduleCombo.DisplayMember = "DisplayName";
+            moduleCombo.DisplayMember = "DisplayName";
             moduleCombo.ValueMember = "ModuleId";
 
         }
@@ -50,10 +50,13 @@ namespace Praktijkopdracht_T8.View
         {
             string name = txtName.Text;
             string description = txtDescription.Text;
-            string startdate = txtStartdate.Text;
-            string dueDate = txtDueDate.Text;
+            DateTime startdate = txtStartdate.Value;
+            DateTime dueDate = txtDueDate.Value;
             string status = statusCombo.SelectedItem.ToString();
-            ModuleModel selectedModule = moduleCombo.SelectedItem as ModuleModel;
+            ModuleModel selectedModule = new ModuleModel
+            {
+                ModuleId = (int)moduleCombo.SelectedValue
+            };
 
             TaskModel task = new TaskModel
             {

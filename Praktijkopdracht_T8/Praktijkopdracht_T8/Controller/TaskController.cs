@@ -5,13 +5,14 @@
  */
 
 using Praktijkopdracht_T8.Model;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace Praktijkopdracht_T8.Controller
 {
     public static class TaskController
     {
-        private static string connectionString = @"Data Source=LAPTOP-FKB21FMN;Initial Catalog=PlanningDB;Integrated Security=True";
+        private static string connectionString = ConfigurationManager.ConnectionStrings["RDSConnection"].ConnectionString;
 
         public static int Create(TaskModel task)
         {
@@ -24,8 +25,8 @@ namespace Praktijkopdracht_T8.Controller
                 {
                     command.Parameters.AddWithValue("Name", task.Name);
                     command.Parameters.AddWithValue("Description", task.Description);
-                    command.Parameters.AddWithValue("Startdate", task.Startdate);
-                    command.Parameters.AddWithValue("DueDate", task.DueDate);
+                    command.Parameters.AddWithValue("Startdate", task.Startdate.ToString("yyyy-MM-dd"));
+                    command.Parameters.AddWithValue("DueDate", task.DueDate.ToString("yyyy-MM-dd"));
                     command.Parameters.AddWithValue("Status", task.Status);
                     command.Parameters.AddWithValue("ModuleId", task.Module.ModuleId);
                     try
@@ -69,8 +70,8 @@ namespace Praktijkopdracht_T8.Controller
                             TaskId = (int)reader["TaskId"],
                             Name = (string)reader["Task"],
                             Description = (string)reader["Description"],
-                            Startdate = ((DateTime)reader["Startdate"]).ToString("dd-MM-yyyy"),
-                            DueDate = ((DateTime)reader["DueDate"]).ToString("dd-MM-yyyy"),
+                            Startdate = (DateTime)reader["Startdate"],
+                            DueDate = (DateTime)reader["DueDate"],
                             Status = (string)reader["Status"],
                             Module = new ModuleModel
                             {
@@ -87,7 +88,7 @@ namespace Praktijkopdracht_T8.Controller
                                     FirstName = (string)reader["FirstName"],
                                     Infix = reader["Infix"] == DBNull.Value ? null : (string)reader["Infix"],
                                     Surname = (string)reader["Surname"],
-                                    Image = (string)reader["Image"]
+                                    Image = reader["Image"] == DBNull.Value ? null : (byte[])reader["Image"]
                                 }
                             }
                         });

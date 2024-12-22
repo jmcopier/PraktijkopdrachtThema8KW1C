@@ -12,6 +12,6 @@ namespace Praktijkopdracht_T8.Model
         public string FirstName { get; set; }
         public string Infix { get; set; }
         public string Surname { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
     }
 }

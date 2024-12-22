@@ -113,17 +113,23 @@
             // 
             // txtStartdate
             // 
+            txtStartdate.CustomFormat = "";
+            txtStartdate.Format = DateTimePickerFormat.Short;
             txtStartdate.Location = new Point(139, 107);
             txtStartdate.Name = "txtStartdate";
-            txtStartdate.Size = new Size(200, 23);
+            txtStartdate.Size = new Size(121, 23);
             txtStartdate.TabIndex = 8;
+            txtStartdate.Value = new DateTime(2024, 12, 22, 0, 0, 0, 0);
             // 
             // txtDueDate
             // 
+            txtDueDate.CustomFormat = "";
+            txtDueDate.Format = DateTimePickerFormat.Short;
             txtDueDate.Location = new Point(139, 147);
             txtDueDate.Name = "txtDueDate";
-            txtDueDate.Size = new Size(200, 23);
+            txtDueDate.Size = new Size(121, 23);
             txtDueDate.TabIndex = 9;
+            txtDueDate.Value = new DateTime(2024, 12, 22, 12, 43, 9, 0);
             // 
             // statusCombo
             // 

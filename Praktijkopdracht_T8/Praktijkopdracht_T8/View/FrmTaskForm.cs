@@ -69,8 +69,8 @@ namespace Praktijkopdracht_T8.View
             foreach (TaskModel task in tasks)
             {
                 ListViewItem item = new ListViewItem(task.Name);
-                item.SubItems.Add(task.Startdate);
-                item.SubItems.Add(task.DueDate);
+                item.SubItems.Add(task.Startdate.ToString("dd-MM-yyyy"));
+                item.SubItems.Add(task.DueDate.ToString("dd-MM-yyyy"));
                 item.SubItems.Add(task.Status);
                 item.SubItems.Add(task.Module.Name);
 

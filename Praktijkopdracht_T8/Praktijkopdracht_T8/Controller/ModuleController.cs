@@ -5,13 +5,14 @@
  */
 
 using Praktijkopdracht_T8.Model;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace Praktijkopdracht_T8.Controller
 {
     public static class ModuleController
     {
-        private static string connectionString = @"Data Source=LAPTOP-FKB21FMN;Initial Catalog=PlanningDB;Integrated Security=True";
+        private static string connectionString = ConfigurationManager.ConnectionStrings["RDSConnection"].ConnectionString;
 
         public static List<ModuleModel> ReadAll()
         {
@@ -42,7 +43,7 @@ namespace Praktijkopdracht_T8.Controller
                                 FirstName = (string)reader["FirstName"],
                                 Infix = reader["Infix"] == DBNull.Value ? null : (string)reader["Infix"],
                                 Surname = (string)reader["Surname"],
-                                Image = (string)reader["Image"]
+                                Image = reader["Image"] == DBNull.Value ? null : (byte[])reader["Image"]
                             }
                         });
                     }

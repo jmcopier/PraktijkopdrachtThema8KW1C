@@ -1,3 +1,5 @@
+using Praktijkopdracht_T8.View;
+
 namespace Praktijkopdracht_T8
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace Praktijkopdracht_T8
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new FrmMainWindow());
+            Application.Run(new PasswordForm());
         }
     }
 }

@@ -5,13 +5,14 @@
  */
 
 using Praktijkopdracht_T8.Model;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace Praktijkopdracht_T8.Controller
 {
     public static class ThemeController
     {
-        private static string connectionString = @"Data Source=LAPTOP-FKB21FMN;Initial Catalog=PlanningDB;Integrated Security=True";
+        private static string connectionString = ConfigurationManager.ConnectionStrings["RDSConnection"].ConnectionString;
 
         public static List<ThemeModel> ReadAll()
         {
